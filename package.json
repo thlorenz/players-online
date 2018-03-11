@@ -3,8 +3,12 @@
   "version": "0.1.0",
   "description": "Queries how many players are online at various Poker sites.",
   "main": "players-online.js",
+  "bin": {
+    "po-watch": "./bin/po-watch"
+  },
   "files": [
-    "players-online.js"
+    "players-online.js",
+    "bin/*"
   ],
   "scripts": {
     "test": "tape test/*.js"

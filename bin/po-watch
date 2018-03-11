@@ -1,0 +1,34 @@
+#!/usr/bin/env node
+
+const roomString = process.argv[2]
+if (typeof roomString !== 'string') {
+  console.error('Please supply the room in as first arg')
+  process.exit(1)
+}
+const intervalString = process.argv[3]
+if (typeof intervalString !== 'string') {
+  console.error('Please supply the interval in minutes as second arg')
+  process.exit(1)
+}
+const interval = parseInt(intervalString)
+
+const { playersOnline, rooms } = require('../')
+const room = rooms[roomString]
+if (room == null) {
+  console.error('Unknown room', roomString)
+  process.exit(1)
+}
+
+async function next() {
+  try {
+    const res = await playersOnline(room)
+    const now = Date.now()
+    const json = JSON.stringify({ ...res, timestamp: now })
+    console.log(json)
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+setInterval(next, interval * 1000 * 60)
+next()
