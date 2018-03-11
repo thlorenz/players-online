@@ -1,9 +1,11 @@
 {
   "name": "players-online",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Queries how many players are online at various Poker sites.",
   "main": "players-online.js",
-  "files": [ "players-online.js" ],
+  "files": [
+    "players-online.js"
+  ],
   "scripts": {
     "test": "tape test/*.js"
   },
